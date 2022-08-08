@@ -1,40 +1,25 @@
+import React, { useState } from "react";
+import Link from "next/link";
 import { NextPage } from "next";
-import { useState } from "react";
-import { useRouter } from "next/router";
 
 const App: NextPage = () => {
-  const router = useRouter();
-  const [name, setName] = useState<string>("");
-
+  const [userName, setUserName] = useState("");
   return (
     <div>
-      <button
-        type="button"
-        onClick={() => {
-          router.push("/tomato");
-        }}
-      >
-        tomato로 이동
-      </button>
-      <p>이름</p>
-
+      <label>userName</label>
       <input
-        value={name}
-        onChange={(e) => setName(e.target.value)}
-        style={{ marginRight: "12px" }}
+        type="text"
+        value={userName}
+        onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+          setUserName(e.target.value)
+        }
       />
-      <button
-        type="button"
-        onClick={() => {
-          router.push(`/vegetable/${name}`);
-        }}
-      >
-        {name} 으로 이동
-      </button>
-
-      <div>
-        <img src="/asset/images/01.jpg" alt="열기구" />
-      </div>
+      <p>{userName} 깃허브 검색하기</p>
+      <Link href={`/users/${userName}`}>
+        <a>
+          <button>검색하기</button>
+        </a>
+      </Link>
     </div>
   );
 };
