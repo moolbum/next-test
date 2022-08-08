@@ -1,9 +1,8 @@
-import Link from "next/link";
+import { NextPage } from "next";
 import { useState } from "react";
 import { useRouter } from "next/router";
-import Image from "next/image";
 
-const App = () => {
+const App: NextPage = () => {
   const router = useRouter();
   const [name, setName] = useState<string>("");
 
@@ -30,7 +29,7 @@ const App = () => {
           router.push(`/vegetable/${name}`);
         }}
       >
-        {name}으로 이동
+        {name} 으로 이동
       </button>
 
       <div>

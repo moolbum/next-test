@@ -1,7 +1,8 @@
+import { NextPage } from "next";
 import Link from "next/link";
 import { useRouter } from "next/router";
 
-const name = () => {
+const name: NextPage = () => {
   const { query } = useRouter();
 
   return (
