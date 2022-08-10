@@ -9,7 +9,7 @@ const StaticPage = ({ time }: { time: string }) => {
 };
 
 export const getStaticProps: GetStaticProps = async () => {
-  return { props: { time: new Date().toISOString() } };
+  return { props: { time: new Date().toISOString() }, revalidate: 3 };
 };
 
 export default StaticPage;
