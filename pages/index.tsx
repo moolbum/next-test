@@ -5,7 +5,7 @@ import { NextPage } from "next";
 const App: NextPage = () => {
   const [userName, setUserName] = useState("");
   return (
-    <div>
+    <form>
       <label>userName</label>
       <input
         type="text"
@@ -17,10 +17,10 @@ const App: NextPage = () => {
       <p>{userName} 깃허브 검색하기</p>
       <Link href={`/users/${userName}`}>
         <a>
-          <button>검색하기</button>
+          <button type="submit">검색하기</button>
         </a>
       </Link>
-    </div>
+    </form>
   );
 };
 
