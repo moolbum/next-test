@@ -1,5 +1,5 @@
-import { useRouter } from "next/router";
-import axios from "axios";
+import { useRouter } from 'next/router';
+import axios from 'axios';
 
 const name = ({ user }: any) => {
   const router = useRouter();
@@ -11,7 +11,7 @@ const name = ({ user }: any) => {
       <button
         type="button"
         onClick={() => {
-          router.push("/");
+          router.push('/');
         }}
       >
         go To Home

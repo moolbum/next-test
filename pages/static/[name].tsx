@@ -1,5 +1,5 @@
-import fetch from "isomorphic-unfetch";
-import { GetStaticPaths, GetStaticProps } from "next";
+import fetch from 'isomorphic-unfetch';
+import { GetStaticPaths, GetStaticProps } from 'next';
 
 const name = ({ user, time }: { user: any; time: string }) => {
   const userName = user && user.name;
@@ -14,7 +14,7 @@ const name = ({ user, time }: { user: any; time: string }) => {
 export const getStaticProps: GetStaticProps = async ({ params }) => {
   try {
     const res = await fetch(
-      `http://api.github.com/users/${params && params.name}`
+      `http://api.github.com/users/${params && params.name}`,
     );
     if (res.status === 200) {
       const user = await res.json();
@@ -29,7 +29,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
 
 export const getStaticPaths: GetStaticPaths = async () => {
   return {
-    paths: [{ params: { name: "jerrynim" } }],
+    paths: [{ params: { name: 'jerrynim' } }],
     fallback: true,
   };
 };

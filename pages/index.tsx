@@ -1,10 +1,10 @@
-import React, { useState } from "react";
-import Link from "next/link";
-import { NextPage } from "next";
-import styled from "styled-components";
+import React, { useState } from 'react';
+import Link from 'next/link';
+import { NextPage } from 'next';
+import styled from 'styled-components';
 
 const App: NextPage = () => {
-  const [userName, setUserName] = useState("");
+  const [userName, setUserName] = useState('');
   return (
     <FormContainer>
       <label>userName</label>
