@@ -1,11 +1,12 @@
 import React, { useState } from "react";
 import Link from "next/link";
 import { NextPage } from "next";
+import styled from "styled-components";
 
 const App: NextPage = () => {
   const [userName, setUserName] = useState("");
   return (
-    <form>
+    <FormContainer>
       <label>userName</label>
       <input
         type="text"
@@ -20,8 +21,14 @@ const App: NextPage = () => {
           <button type="submit">검색하기</button>
         </a>
       </Link>
-    </form>
+    </FormContainer>
   );
 };
 
 export default App;
+
+const FormContainer = styled.form`
+  label {
+    font-size: 2rem;
+  }
+`;
