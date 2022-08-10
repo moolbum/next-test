@@ -1,11 +1,24 @@
 import fetch from "isomorphic-unfetch";
+import { useRouter } from "next/router";
 import { GetServerSideProps, NextPage } from "next";
 
 const name = ({ user }: any) => {
-  console.log(user);
+  const router = useRouter();
   const userName = user && user.name;
 
-  return <div>{userName}</div>;
+  return (
+    <div>
+      <div>{userName}</div>
+      <button
+        type="button"
+        onClick={() => {
+          router.push("/");
+        }}
+      >
+        go To Home
+      </button>
+    </div>
+  );
 };
 
 export const getServerSideProps: GetServerSideProps = async ({ query }) => {
