@@ -40,8 +40,8 @@ const Io = () => {
 
   return (
     <IoContainer>
-      {itemLists.map((v, i) => {
-        return <Item number={i + 1} key={i} />;
+      {itemLists.map((_, idx) => {
+        return <Item number={idx + 1} key={idx} />;
       })}
       <div ref={setTarget} className="Target-Element">
         {isLoaded && <Loader />}
