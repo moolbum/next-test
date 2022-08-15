@@ -1,13 +1,51 @@
 import styled from 'styled-components';
-
-const itemList = Array.from({ length: 10 });
+import { useEffect, useState } from 'react';
+import Loader from './Loader';
+import Item from './item';
 
 const Io = () => {
+  const [target, setTarget] = useState<HTMLDivElement | null>(null);
+  const [isLoaded, setIsLoaded] = useState<boolean>(false);
+  const [itemLists, setItemLists] = useState<number[]>([1, 2, 3]);
+
+  const getMoreItem = async () => {
+    setIsLoaded(true);
+    await new Promise((resolve) => setTimeout(resolve, 1500));
+    let Items = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+    setItemLists((itemLists) => itemLists.concat(Items));
+    setIsLoaded(false);
+  };
+
+  const onIntersect: IntersectionObserverCallback = async (
+    [entry]: IntersectionObserverEntry[],
+    observer: IntersectionObserver,
+  ) => {
+    if (entry.isIntersecting && !isLoaded) {
+      observer.unobserve(entry.target);
+      await getMoreItem();
+      observer.observe(entry.target);
+    }
+  };
+
+  useEffect(() => {
+    let observer: IntersectionObserver;
+    if (target) {
+      observer = new IntersectionObserver(onIntersect, {
+        threshold: 0.4,
+      });
+      observer.observe(target!);
+    }
+    return () => observer && observer.disconnect();
+  }, [target]);
+
   return (
     <IoContainer>
-      {itemList.map((_, idx) => {
-        return <Wrap key={idx} />;
+      {itemLists.map((v, i) => {
+        return <Item number={i + 1} key={i} />;
       })}
+      <div ref={setTarget} className="Target-Element">
+        {isLoaded && <Loader />}
+      </div>
     </IoContainer>
   );
 };
@@ -15,17 +53,8 @@ const Io = () => {
 export default Io;
 
 const IoContainer = styled.main`
-  text-align: center;
-`;
-
-const Wrap = styled.div`
-  margin: 20rem auto;
-  width: 20rem;
-  height: 20rem;
-  background: tomato;
-  border-radius: 2rem;
-
-  p {
-    font-size: 1.6rem;
-  }
+  display: flex;
+  margin: 0 auto;
+  flex-direction: column;
+  align-items: center;
 `;
