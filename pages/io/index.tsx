@@ -41,7 +41,7 @@ const Io = () => {
   return (
     <IoContainer>
       {itemLists.map((_, idx) => {
-        return <Item number={idx + 1} key={idx} />;
+        return <Item number={idx + 1} key={idx.toString()} />;
       })}
       <div ref={setTarget} className="Target-Element">
         {isLoaded && <Loader />}
