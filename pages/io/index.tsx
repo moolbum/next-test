@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { useEffect, useState } from 'react';
 import Loader from './Loader';
-import Item from './item';
+import Item from './Item';
 
 const Io = () => {
   const [target, setTarget] = useState<HTMLDivElement | null>(null);
