@@ -5,6 +5,7 @@ import styled from 'styled-components';
 import { typoMap } from '../src/styles/typo';
 import Button from '../src/components/Button';
 import { colorMap } from '../src/styles/color';
+import Head from 'next/head';
 
 const TITLE = 'Github 계정검색 🧑‍💻';
 
@@ -12,26 +13,32 @@ const App: NextPage = () => {
   const [userName, setUserName] = useState('');
 
   return (
-    <FormContainer>
-      <h1>{TITLE}</h1>
-      <input
-        type="text"
-        value={userName}
-        onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
-          setUserName(e.target.value)
-        }
-      />
-      <p>{userName}</p>
-      <p>깃허브 검색하기</p>
+    <>
+      <Head>
+        <title>Github 계정검색</title>
+      </Head>
 
-      <Link href={`/users/${userName}`}>
-        <a>
-          <Button type="submit" radius="round" color="gray">
-            검색하기
-          </Button>
-        </a>
-      </Link>
-    </FormContainer>
+      <FormContainer>
+        <h1>{TITLE}</h1>
+        <input
+          type="text"
+          value={userName}
+          onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+            setUserName(e.target.value)
+          }
+        />
+        <p>{userName}</p>
+        <p>깃허브 검색하기</p>
+
+        <Link href={`/users/${userName}`}>
+          <a>
+            <Button type="submit" radius="round" color="gray">
+              검색하기
+            </Button>
+          </a>
+        </Link>
+      </FormContainer>
+    </>
   );
 };
 
