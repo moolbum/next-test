@@ -33,7 +33,7 @@ const Io = () => {
       observer = new IntersectionObserver(onIntersect, {
         threshold: 0.4,
       });
-      observer.observe(target!);
+      observer.observe(target);
     }
     return () => observer && observer.disconnect();
   }, [target]);
