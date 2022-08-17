@@ -1,7 +1,11 @@
 import { memo } from 'react';
 import styled from 'styled-components';
 
-const Item = ({ number }: { number: number }) => {
+interface ItemProps {
+  number: number;
+}
+
+const Item = ({ number }: ItemProps) => {
   return (
     <ItemWrap>
       <div className="ItemWrap">

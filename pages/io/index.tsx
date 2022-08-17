@@ -4,7 +4,7 @@ import Loader from './Loader';
 import Item from './Item';
 
 const Io = () => {
-  const [target, setTarget] = useState<HTMLDivElement | null>(null);
+  const [target, setTarget] = useState<HTMLElement | null>(null);
   const [isLoaded, setIsLoaded] = useState<boolean>(false);
   const [itemLists, setItemLists] = useState<number[]>([1, 2, 3]);
 
@@ -33,7 +33,7 @@ const Io = () => {
       observer = new IntersectionObserver(onIntersect, {
         threshold: 0.4,
       });
-      observer.observe(target!);
+      observer.observe(target);
     }
     return () => observer && observer.disconnect();
   }, [target]);
