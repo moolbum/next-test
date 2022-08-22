@@ -21,6 +21,7 @@ const Header = () => {
   const handleSubmitClick = (e: React.FormEvent) => {
     e.preventDefault();
     router.push(`/users/${userName}`);
+    setUserName('');
   };
 
   return (
