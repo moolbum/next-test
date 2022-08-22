@@ -14,18 +14,30 @@ const name = ({ user }: any) => {
       <Head>
         <title>{router.query.name}</title>
       </Head>
+
       {user ? (
-        <div>
-          <div>{userName}</div>
-          <button
-            type="button"
-            onClick={() => {
-              router.push('/');
-            }}
-          >
-            go To Home
-          </button>
-        </div>
+        <>
+          <ProfileContainer>
+            <ImageWrapper>
+              <img src={user.avatar_url} alt={`${user.name} 프로필이미지`} />
+            </ImageWrapper>
+
+            <ProfileWrapper>
+              <h2 className="profile-user-username">{userName}</h2>
+              <p className="profile-user-login">{user.login}</p>
+              <p className="profile-user-bio">{user.bio}</p>
+            </ProfileWrapper>
+
+            <button
+              type="button"
+              onClick={() => {
+                router.push('/');
+              }}
+            >
+              go To Home
+            </button>
+          </ProfileContainer>
+        </>
       ) : (
         <NothingUser>
           <h1>일치하는 유저가 없습니다</h1>
@@ -74,5 +86,39 @@ const NothingUser = styled.div`
   > h1 {
     ${typoMap.h1};
     margin-bottom: 1rem;
+  }
+`;
+
+const ProfileContainer = styled.article`
+  width: 25%;
+  max-width: 27rem;
+  margin-right: 2.6rem;
+`;
+
+const ImageWrapper = styled.section`
+  width: 100%;
+  border: 1px solid #e1e428;
+
+  img {
+    display: block;
+    width: 100%;
+  }
+`;
+
+const ProfileWrapper = styled.section`
+  .profile-user-username {
+    margin: 0;
+    padding-top: 1.6rem;
+    font-size: 2.6rem;
+  }
+
+  .profile-user-login {
+    margin: 0;
+    font-size: 2rem;
+  }
+
+  .profile-user-bio {
+    margin: 0;
+    font-size: 1.4rem;
   }
 `;
