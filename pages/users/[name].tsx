@@ -27,15 +27,6 @@ const name = ({ user }: any) => {
               <p className="profile-user-login">{user.login}</p>
               <p className="profile-user-bio">{user.bio}</p>
             </ProfileWrapper>
-
-            <button
-              type="button"
-              onClick={() => {
-                router.push('/');
-              }}
-            >
-              go To Home
-            </button>
           </ProfileContainer>
         </>
       ) : (
@@ -97,7 +88,7 @@ const ProfileContainer = styled.article`
 
 const ImageWrapper = styled.section`
   width: 100%;
-  border: 1px solid #e1e428;
+  border: none;
 
   img {
     display: block;
