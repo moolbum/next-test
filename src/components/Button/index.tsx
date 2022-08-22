@@ -11,12 +11,26 @@ interface ButtonProps {
   width?: buttonWidthType;
   color: buttonColorType;
   radius: buttonRadiusType;
+  onClick?: () => void;
   type: any;
 }
 
-const Button = ({ children, type, width, color, radius }: ButtonProps) => {
+const Button = ({
+  children,
+  type,
+  width,
+  color,
+  radius,
+  onClick,
+}: ButtonProps) => {
   return (
-    <StyleButton width={width} type={type} color={color} radius={radius}>
+    <StyleButton
+      width={width}
+      type={type}
+      color={color}
+      radius={radius}
+      onClick={onClick}
+    >
       {children}
     </StyleButton>
   );
