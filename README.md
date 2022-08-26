@@ -37,3 +37,4 @@
 - Link, Router ✅
 - getServerSideProps ✅
 - getStaticSideProps ✅
+- intersectionObserver ✅
