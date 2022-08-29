@@ -1,7 +1,8 @@
 import styled from 'styled-components';
 import { useEffect, useState } from 'react';
-import Loader from './Loader';
+
 import Item from './Item';
+import Loader from '../../src/components/Loader';
 
 const Io = () => {
   const [target, setTarget] = useState<HTMLElement | null>(null);
@@ -27,7 +28,7 @@ const Io = () => {
     }
   };
 
-  useEffect(() => {
+  useEffect(() => { 
     let observer: IntersectionObserver;
     if (target) {
       observer = new IntersectionObserver(onIntersect, {
